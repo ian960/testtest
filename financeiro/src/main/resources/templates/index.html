@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Página Inicial</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+    <style>
+        .container-fluid.text-center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 100px auto; /* Ajustado para 100px de margem superior e inferior */
+            width: 30%; /* Ajustado para 30% da largura da tela */
+            padding: 20px;
+            border-radius: 15px;
+            background-color: #BFD7EA; /* Azul claro */
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Sombra */
+        }
+
+        .container-fluid.text-center > a {
+            margin-top: 10px;
+        }
+
+        h1 {
+            margin-top: 0;
+            color: #0B3954; /* Azul escuro */
+        }
+        .btn-primary {
+            background-color: #0B3954; /* Cor de fundo dos botões */
+            border-color: #0B3954; /* Cor da borda dos botões */
+        }
+        .btn-primary:hover {
+            background-color: #092d3f; /* Cor de fundo dos botões ao passar o mouse */
+            border-color: #092d3f; /* Cor da borda dos botões ao passar o mouse */
+        }
+        .btn-primary:focus {
+            box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5); /* Efeito de foco nos botões */
+        }
+        .btn-primary:disabled {
+            background-color: #b7c0c8; /* Cor de fundo dos botões desabilitados */
+            border-color: #b7c0c8; /* Cor da borda dos botões desabilitados */
+        }
+        .btn-primary:disabled:hover {
+            background-color: #b7c0c8; /* Cor de fundo dos botões desabilitados ao passar o mouse */
+            border-color: #b7c0c8; /* Cor da borda dos botões desabilitados ao passar o mouse */
+        }
+    </style>
+</head>
+<body style="background-color: #0B3954;">
+
+<div class="container-fluid text-center">
+    <h1>Bem-vindo</h1> <!-- Movido para dentro do quadrado -->
+    <a th:href="@{/pessoas/new}" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">Cadastrar pessoa</a>
+    <a th:href="@{/lancamentos/new}" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">Cadastrar lançamento</a>
+    <a th:href="@{/pessoas}" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">Pessoas</a>
+    <a th:href="@{/lancamentos}" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">Lançamentos</a>
+</div>
+
+</body>
+</html>

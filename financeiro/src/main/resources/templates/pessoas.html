@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Pessoas</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <style>
+        body {
+            padding-top: 20px;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Pessoas</h1>
+    <a th:href="@{/pessoas/new}" class="btn btn-primary mb-3">Adicionar Nova Pessoa</a>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Ativo</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="pessoa : ${listPessoas}">
+            <td th:text="${pessoa.id}"></td>
+            <td th:text="${pessoa.nome}"></td>
+            <td th:text="${pessoa.ativo}"></td>
+            <td>
+                <a th:href="@{/pessoas/edit/{id}(id=${pessoa.id})}" class="btn btn-sm btn-info">Editar</a>
+                <a th:href="@{/pessoas/delete/{id}(id=${pessoa.id})}" class="btn btn-sm btn-danger">Deletar</a>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+    <a href="/" class="btn btn-secondary">Voltar ao início</a>
+</div>
+
+</body>
+</html>

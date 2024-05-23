@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lançamentos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h2 class="mt-5 mb-4">Lista de Lançamentos</h2>
+    <form class="form-inline mb-3">
+        <input class="form-control mr-sm-2" type="text" placeholder="Pesquisar" aria-label="Search" id="searchInput">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="searchLancamentos()">Pesquisar</button>
+    </form>
+    <a class="btn btn-primary mb-3" th:href="@{/lancamentos/new}">Novo Lançamento</a>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Descrição</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Vencimento</th>
+            <th scope="col">Pagamento</th>
+            <th scope="col">Valor</th>
+            <th scope="col">Observação</th>
+            <th scope="col">Pessoa</th>
+            <th scope="col">Ações</th>
+        </tr>
+        </thead>
+        <tbody id="lancamentoTableBody">
+        <tr th:each="lancamento : ${listLancamentos}">
+            <td th:text="${lancamento.descricao}">Descrição</td>
+            <td th:text="${lancamento.tipo}">Tipo</td>
+            <td th:text="${lancamento.dataVencimento}">Data de Vencimento</td>
+            <td th:text="${lancamento.dataPagamento}">Data de Pagamento</td>
+            <td th:text="${lancamento.valor}">Valor</td>
+            <td th:text="${lancamento.observacao}">Observação</td>
+            <td th:text="${lancamento.pessoa.nome}">Pessoa</td>
+            <td>
+                <a class="btn btn-info btn-sm btn-block" th:href="@{/lancamentos/edit/{id}(id=${lancamento.id})}">Editar</a>
+                <a class="btn btn-danger btn-sm btn-block mt-1" th:href="@{/lancamentos/delete/{id}(id=${lancamento.id})}">Excluir</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a href="/" class="btn btn-secondary">Voltar ao início</a>
+
+</div>
+
+
+<script>
+    function searchLancamentos() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("searchInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("lancamentoTableBody");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            tds = tr[i].getElementsByTagName("td");
+            match = false;
+            for (var j = 0; j < tds.length; j++) {
+                td = tds[j];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        match = true;
+                        break;
+                    }
+                }
+            }
+            if (match) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+</script>
+
+
+</body>
+</html>
