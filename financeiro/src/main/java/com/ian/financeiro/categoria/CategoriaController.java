@@ -26,6 +26,7 @@ public class CategoriaController {
     public String showNewForm(Model model) {
         model.addAttribute("categoria", new Categoria());
         return "categoria_form";
+
     }
 
     @PostMapping("/categorias/save")

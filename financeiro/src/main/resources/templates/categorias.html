@@ -3,26 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>Categorias</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-<h2>Lista de Categorias</h2>
-<a th:href="@{/categorias/new}">Nova Categoria</a>
-<table>
-    <thead>
-    <tr>
-        <th>Nome</th>
-        <th>Ações</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="categoria : ${listCategorias}">
-        <td th:text="${categoria.nome}">Nome</td>
-        <td>
-            <a th:href="@{/categorias/edit/{id}(id=${categoria.id})}">Editar</a> |
-            <a th:href="@{/categorias/delete/{id}(id=${categoria.id})}">Excluir</a>
-        </td>
-    </tr>
-    </tbody>
-</table>
+<div class="container">
+    <h2 class="mt-5">Lista de Categorias</h2>
+    <a class="btn btn-primary mb-3" th:href="@{/categorias/new}">Nova Categoria</a>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="categoria : ${listCategorias}">
+            <td th:text="${categoria.nome}">Nome</td>
+            <td>
+                <a class="btn btn-info btn-sm" th:href="@{/categorias/edit/{id}(id=${categoria.id})}">Editar</a>
+                <a class="btn btn-danger btn-sm" th:href="@{/categorias/delete/{id}(id=${categoria.id})}">Excluir</a>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+    <a href="/" class="btn btn-secondary">Voltar ao início</a>
+</div>
+
 </body>
 </html>

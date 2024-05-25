@@ -2,6 +2,8 @@ package com.ian.financeiro.lancamento;
 
 import com.ian.financeiro.pessoa.Pessoa;
 import com.ian.financeiro.pessoa.PessoaService;
+import com.ian.financeiro.categoria.Categoria;
+import com.ian.financeiro.categoria.CategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,11 +19,16 @@ public class LancamentoController {
     @Autowired
     private PessoaService pessoaService;
 
+    @Autowired
+    private CategoriaService categoriaService;
+
     @GetMapping("/lancamentos/new")
     public String showNewForm(Model model) {
         model.addAttribute("lancamento", new Lancamento());
         List<Pessoa> pessoas = pessoaService.listAll();
+        List<Categoria> categorias = categoriaService.listAll();
         model.addAttribute("pessoas", pessoas);
+        model.addAttribute("categorias", categorias);
         return "lancamento_form";
     }
 

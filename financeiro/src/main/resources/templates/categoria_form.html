@@ -3,14 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Formulário de Categoria</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-<h2>Formulário de Categoria</h2>
-<form th:action="@{/categorias/save}" th:object="${categoria}" method="post">
-    <label>Nome:</label>
-    <input type="text" th:field="*{nome}" /><br/>
-    <button type="submit">Salvar</button>
-</form>
+<div class="container">
+    <h2 class="mt-4 mb-4">Formulário de Categoria</h2>
+    <form th:action="@{/categorias/save}" th:object="${categoria}" method="post">
+        <div class="form-group">
+            <label for="nome">Nome:</label>
+            <input type="text" class="form-control" id="nome" th:field="*{nome}" />
+        </div>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+    </form>
+    <br>
+    <a href="/" class="btn btn-secondary">Voltar ao início</a>
+</div>
+
 </body>
 </html>
-
