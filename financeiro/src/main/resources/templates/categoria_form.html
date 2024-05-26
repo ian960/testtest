@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Formulário de Categoria</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 </head>
 <body>
 <div class="container">
-    <h2 class="mt-4 mb-4">Formulário de Categoria</h2>
+    <h2 class="mt-4 mb-4" th:text="${categoria.id == null} ? 'Nova Categoria' : 'Editar Categoria'"></h2>
     <form th:action="@{/categorias/save}" th:object="${categoria}" method="post">
+        <input type="hidden" th:field="*{id}">
         <div class="form-group">
             <label for="nome">Nome:</label>
             <input type="text" class="form-control" id="nome" th:field="*{nome}" />
@@ -18,6 +19,5 @@
     <br>
     <a href="/" class="btn btn-secondary">Voltar ao início</a>
 </div>
-
 </body>
 </html>

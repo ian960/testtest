@@ -1,8 +1,5 @@
 package com.ian.financeiro.categoria;
 
-
-import com.ian.financeiro.categoria.Categoria;
-import com.ian.financeiro.categoria.CategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,11 +23,10 @@ public class CategoriaController {
     public String showNewForm(Model model) {
         model.addAttribute("categoria", new Categoria());
         return "categoria_form";
-
     }
 
     @PostMapping("/categorias/save")
-    public String saveCategoria(Categoria categoria) {
+    public String saveCategoria(@ModelAttribute("categoria") Categoria categoria) {
         service.save(categoria);
         return "redirect:/categorias";
     }

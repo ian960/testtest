@@ -23,6 +23,7 @@
             <th scope="col">Valor</th>
             <th scope="col">Observação</th>
             <th scope="col">Pessoa</th>
+            <th scope="col">Categoria</th>
             <th scope="col">Ações</th>
         </tr>
         </thead>
@@ -35,6 +36,7 @@
             <td th:text="${lancamento.valor}">Valor</td>
             <td th:text="${lancamento.observacao}">Observação</td>
             <td th:text="${lancamento.pessoa.nome}">Pessoa</td>
+            <td th:text="${lancamento.categoria != null ? lancamento.categoria.nome : 'Sem categoria'}">Categoria</td> <!-- Mostrar a categoria do lançamento -->
             <td>
                 <a class="btn btn-info btn-sm btn-block" th:href="@{/lancamentos/edit/{id}(id=${lancamento.id})}">Editar</a>
                 <a class="btn btn-danger btn-sm btn-block mt-1" th:href="@{/lancamentos/delete/{id}(id=${lancamento.id})}">Excluir</a>
@@ -44,9 +46,7 @@
     </table>
 
     <a href="/" class="btn btn-secondary">Voltar ao início</a>
-
 </div>
-
 
 <script>
     function searchLancamentos() {
@@ -76,7 +76,6 @@
         }
     }
 </script>
-
 
 </body>
 </html>

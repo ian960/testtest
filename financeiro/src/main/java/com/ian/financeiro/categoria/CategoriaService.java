@@ -1,7 +1,5 @@
 package com.ian.financeiro.categoria;
 
-import com.ian.financeiro.categoria.Categoria;
-import com.ian.financeiro.categoria.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
